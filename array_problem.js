@@ -28,3 +28,89 @@ function mergeTwo(arr1, arr2) {
 }
 console.log(findMeidanOfTwoSortedArray([1, 2], [3, 4])) //2.50000
 
+
+// leetcode
+function romanToInt(s) {
+
+    const romToIntObj = {
+        "I": 1,
+        "IV": 4,
+        "V": 5,
+        "IX": 9,
+        "X": 10,
+        "XL": 40,
+        "L": 50,
+        "XC": 90,
+        "C": 100,
+        "CD": 400,
+        "D": 500,
+        "CM": 900,
+        "M": 1000
+    }
+    let res = 0;
+    for (var i = 0; i < s.length; i++) {
+
+        if (i < s.length - 1 && romToIntObj[s[i] + s[i + 1]]) {
+            res += romToIntObj[s[i] + s[i + 1]];
+            i++;
+        } else if (romToIntObj[s[i]]) {
+            res += romToIntObj[s[i]];
+        }
+    }
+    return res;
+}
+console.log(romanToInt("MCMXCIV"));
+
+// First Unique Character in a String
+
+function firstUniqChar(s = "") {
+
+    const obj = {};
+    const res = []
+    for (let i = 0; i < s.length; i++) {
+        if (obj[s[i]]) {
+            obj[s[i]]++
+        } else {
+            obj[s[i]] = 1;
+            res.push({ index: i, key: s[i] });
+        }
+    }
+    for (let i = 0; i < res.length; i++) {
+        if (obj[res[i]['key']] == 1) {
+            return res[i]['index']
+        }
+    }
+    return -1;
+};
+console.log("leetcode");
+
+// geekforgreeks
+function factDigit(number) {
+
+    const map = [];
+    let i = 0;
+    let max = 1;
+    while (max < number) {
+        max = fact(i);
+        map.push({ val: max, num: i });
+        i++;
+        if (max == number) {
+            return i;
+        }
+    };
+    let res = ""
+    for (let x = map.length - 1; x >= 0; x--) {
+        if (number >= map[x].val) {
+            number -= map[x].val;
+            res = x + res;
+        }
+    }
+    return number == 0 ? parseInt(res) : -1;
+}
+function fact(number) {
+    let fact = 1;
+    for (let i = 1; i <= number; i++) {
+        fact = fact * i;
+    }
+    return fact;
+}
