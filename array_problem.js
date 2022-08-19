@@ -62,7 +62,6 @@ function romanToInt(s) {
 console.log(romanToInt("MCMXCIV"));
 
 // First Unique Character in a String
-
 function firstUniqChar(s = "") {
 
     const obj = {};
@@ -114,3 +113,46 @@ function fact(number) {
     }
     return fact;
 }
+console.log(432);
+
+// LRU (least recently used cache)
+function LRU(max) {
+    let map = new Map();
+    function getFirstKey() {
+        return map.keys().next.value;
+    }
+    return function (key, value) {
+
+        if (map.has(key)) {
+            map.delete(key);
+        } else if (map.size == max) {
+            map.delete(getFirstKey());
+        }
+        map.set(key, value);
+        return map;
+    }
+}
+
+//leetcode #1338  Reduce Array Size to The Half
+function setMinSizeOfArayy(arr = []) {
+    var obj = {};
+    arr.forEach(a => {
+        if (obj[a]) {
+            obj[a] = obj[a] + 1;
+        } else {
+            obj[a] = 1;
+        }
+    });
+    let keys = Object.keys(obj);
+    keys.sort((a, b) => obj[b] - obj[a]);
+    const target = arr.length / 2;
+    let sum = 0;
+    for (let i = 0; i < keys.length; i++) {
+        sum += obj[keys[i]];
+        if (target <= sum) {
+            return i + 1;
+        }
+    }
+
+}
+console.log(setMinSizeOfArayy([3, 3, 3, 3, 5, 5, 5, 2, 2, 7]));
