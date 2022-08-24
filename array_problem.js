@@ -156,3 +156,37 @@ function setMinSizeOfArayy(arr = []) {
 
 }
 console.log(setMinSizeOfArayy([3, 3, 3, 3, 5, 5, 5, 2, 2, 7]));
+
+//leetcode #659 Split Array into Consecutive Subsequences
+// function isPossible(nums = []) {
+//     const subArr1 = [];
+//     const subArr2 = [];
+
+//     for (let i = 0; i < nums.length; i++) {
+
+//         if (nums[i] == nums[i + 1]) {
+//             if ((subArr1[subArr1.length - 1] == nums[i] - 1 || !subArr1.length) && (subArr2[subArr2.length - 1] == nums[i] - 1 || !subArr2.length)) {
+//                 subArr1.push(nums[i]);
+//                 subArr2.push(nums[i + 1]);
+//                 i++;
+//             } else {
+//                 return false;
+//             }
+
+//         } else {
+//             if (subArr1.length == 0 || subArr1[subArr1.length - 1] == nums[i] - 1 && !(subArr1.length >= 3 || subArr2[subArr2.length - 1] == nums[i] - 1)) {
+//                 subArr1.push(nums[i]);
+//             } else if (subArr2.length == 0 || subArr2[subArr2.length - 1] == nums[i] - 1) {
+//                 subArr2.push(nums[i]);
+//             } else {
+//                 return false
+//             }
+//         }
+
+//     }
+//     return subArr1.length > 2 && (subArr2.length > 2 || subArr2.length == 0);
+// }
+// console.log(isPossible([1, 2, 3, 3, 4, 5]))
+
+
+
