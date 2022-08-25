@@ -79,3 +79,22 @@ function longestPalidromSubstringUsingAlgo(str) {
     return maxSubStringLen;
 };
 console.log(longestPalidromSubstringUsingAlgo("babadab"));
+
+//leetcode 383. Ransom Note
+function canConstruct(ransomNote = "", magazine = "") {
+
+    let obj = {};
+    for (let i = 0; i < magazine.length; i++) {
+        obj[magazine[i]] = obj[magazine[i]] ? obj[magazine[i]] - 1 : -1;
+    }
+    for (let i = 0; i < ransomNote.length; i++) {
+
+        obj[ransomNote[i]] = obj[ransomNote[i]] ? obj[ransomNote[i]] + 1 : 1;
+        if (obj[ransomNote[i]] > 0)
+            return false;
+
+    }
+
+    return true;
+}
+console.log(canConstruct('aa', 'aba'));
